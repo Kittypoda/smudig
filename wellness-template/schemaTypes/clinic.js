@@ -19,6 +19,15 @@ export default {
       type: "text",
     },
     {
+      name: "heroImage",
+      title: "Hero-bilde",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+    
+    {
       name: "phone",
       title: "Telefon",
       type: "string",
