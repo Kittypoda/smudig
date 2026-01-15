@@ -1,23 +1,23 @@
-const reasons = [
-  {
-    title: "Sertifiserte behandlere",
-    text: "Alle våre terapeuter og behandlere er utdannet og sertifisert innen sitt fagfelt.",
-  },
-  {
-    title: "Personlig tilpasset",
-    text: "Hver behandling tilpasses dine behov og ønsker, slik at du får best mulig resultat.",
-  },
-  {
-    title: "Rolig og trygg atmosfære",
-    text: "Vi har skapt et miljø der du kan slappe av og føle deg ivaretatt fra første øyeblikk.",
-  },
-  {
-    title: "Moderne utstyr",
-    text: "Vi bruker oppdatert teknologi og kvalitetsprodukter i alle våre behandlinger.",
-  },
-];
+import { useEffect, useState } from "react";
+import { client } from "../sanityClient";
 
 export default function Trust() {
+  const [reasons, setReasons] = useState([]);
+
+  useEffect(() => {
+    client
+      .fetch(`*[_type == "trustReason"] | order(order asc)`)
+      .then((data) => setReasons(data));
+  }, []);
+
+  if (!reasons.length) {
+    return (
+      <section className="py-20 text-center">
+        <p className="text-neutral-500">Laster fordeler...</p>
+      </section>
+    );
+  }
+
   return (
     <section className="bg-neutral-50 py-20">
       <div className="max-w-7xl mx-auto px-6">
@@ -32,9 +32,9 @@ export default function Trust() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {reasons.map((reason, index) => (
+          {reasons.map((reason) => (
             <div
-              key={index}
+              key={reason._id}
               className="bg-white p-8 rounded-xl border border-neutral-200"
             >
               <h3 className="text-xl font-medium text-neutral-900 mb-3">
@@ -51,3 +51,4 @@ export default function Trust() {
     </section>
   );
 }
+

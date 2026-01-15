@@ -1,35 +1,40 @@
+import { useEffect, useState } from "react";
+import { client } from "../sanityClient";
+
 export default function Contact() {
+  const [info, setInfo] = useState(null);
+
+  useEffect(() => {
+    client
+      .fetch(`*[_type == "aboutContact"][0]`)
+      .then((data) => setInfo(data));
+  }, []);
+
+  if (!info) {
+    return (
+      <section className="py-20 text-center">
+        <p className="text-neutral-500">Laster kontaktinfo...</p>
+      </section>
+    );
+  }
+
   return (
-    <section className="bg-neutral-50 py-20">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        
-        <h2 className="text-3xl font-semibold text-neutral-900 mb-4">
-          Bestill time eller ta kontakt
+    <section className="py-20 bg-neutral-50">
+      <div className="max-w-5xl mx-auto px-6">
+
+        <h2 className="text-3xl font-semibold text-neutral-900 mb-6">
+          Kontakt oss
         </h2>
-        <p className="text-neutral-600 mb-10">
-          Ta kontakt med oss for å booke time eller hvis du har spørsmål om våre behandlinger.
-        </p>
 
-        <div className="flex flex-col md:flex-row gap-6 justify-center">
-          <a
-            href="#"
-            className="bg-neutral-900 text-white px-8 py-4 rounded-md hover:bg-neutral-800 transition"
-          >
-            Bestill time
-          </a>
-          <a
-            href="tel:00000000"
-            className="border border-neutral-300 px-8 py-4 rounded-md hover:bg-neutral-100 transition"
-          >
-            Ring oss
-          </a>
+        <div className="space-y-4 text-neutral-700">
+          <p><strong>Adresse:</strong> {info.address}</p>
+          <p><strong>Telefon:</strong> {info.phone}</p>
+          <p><strong>E-post:</strong> {info.email}</p>
+          <p><strong>Åpningstider:</strong> {info.openingHours}</p>
         </div>
-
-        <p className="mt-8 text-neutral-500">
-          Åpningstider: Man–Fre 09:00–17:00
-        </p>
 
       </div>
     </section>
   );
 }
+
