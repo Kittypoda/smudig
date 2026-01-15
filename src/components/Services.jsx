@@ -1,22 +1,23 @@
-const services = [
-  {
-    title: "Avslappende massasje",
-    description: "En rolig helkroppsbehandling som løser opp spenninger og gir ny energi.",
-    price: "790 kr",
-  },
-  {
-    title: "Hudpleiebehandling",
-    description: "Skånsom og effektiv behandling tilpasset din hudtype.",
-    price: "950 kr",
-  },
-  {
-    title: "Yoga & bevegelse",
-    description: "Små grupper med fokus på pust, balanse og velvære.",
-    price: "350 kr",
-  },
-];
+import { useState, useEffect } from "react";
+import { client } from "../sanityClient";
 
 export default function Services() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    client
+      .fetch(`*[_type == "service"] | order(order asc)`)
+      .then((data) => setServices(data));
+  }, []);
+
+  if (!services.length) {
+    return (
+      <section className="py-20 text-center">
+        <p className="text-neutral-500">Laster behandlinger...</p>
+      </section>
+    );
+  }
+
   return (
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6">
@@ -31,9 +32,9 @@ export default function Services() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
-              key={index}
+              key={service._id}
               className="border border-neutral-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition"
             >
               <div>
@@ -61,3 +62,4 @@ export default function Services() {
     </section>
   );
 }
+
