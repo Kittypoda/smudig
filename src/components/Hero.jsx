@@ -34,37 +34,6 @@ export default function Hero() {
             {clinic.description}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            {clinic.bookingUrl ? (
-              <>
-                <a
-                  href={clinic.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-neutral-900 text-white px-6 py-3 rounded-md hover:bg-neutral-800 transition font-medium flex items-center gap-2"
-                >
-                  Book via Timma
-                  <span className="text-xs bg-white/20 px-2 py-1 rounded">
-                    Anbefalt
-                  </span>
-                </a>
-
-                <Link
-                  to="/booking"
-                  className="border border-neutral-300 px-6 py-3 rounded-md hover:bg-neutral-100 transition text-neutral-800"
-                >
-                  Send forespørsel
-                </Link>
-              </>
-            ) : (
-              <Link
-                to="/booking"
-                className="bg-neutral-900 text-white px-6 py-3 rounded-md hover:bg-neutral-800 transition font-medium"
-              >
-                Send bookingforespørsel
-              </Link>
-            )}
-          </div>
         </div>
 
         {/* RIGHT SIDE — DYNAMISK HERO-BILDE */}
