@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { client } from "../sanityClient";
 import MapEmbed from "./MapEmbed";
 
+import {
+  MapPinIcon,
+  PhoneIcon,
+  EnvelopeIcon,
+  ClockIcon,
+} from "@heroicons/react/24/outline";
+
 export default function Contact() {
   const [info, setInfo] = useState(null);
 
@@ -21,47 +28,68 @@ export default function Contact() {
 
   return (
     <section className="py-20 bg-neutral-50">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start text-center md:text-left">
 
         {/* LEFT COLUMN – CONTACT INFO */}
-        <div>
-          <h2 className="text-3xl font-semibold text-neutral-900 mb-6">
+        <div className="space-y-6">
+
+          <h2 className="text-3xl font-semibold text-neutral-900 mb-6 md:mb-8">
             Kontakt oss
           </h2>
 
-          <div className="space-y-4 text-neutral-700">
-            <p>
-              <strong className="font-medium">Adresse:</strong><br />
-              {info.address}
-            </p>
+          {/* Adresse */}
+          <div className="flex items-start gap-4 justify-center md:justify-start">
+            <MapPinIcon className="w-6 h-6 text-neutral-900 flex-shrink-0" />
+            <div>
+              <p className="font-medium">Adresse</p>
+              <p>{info.address}</p>
+            </div>
+          </div>
 
-            <p>
-              <strong className="font-medium">Telefon:</strong><br />
-              <a href={`tel:${info.phone}`} className="underline hover:no-underline">
+          {/* Telefon */}
+          <div className="flex items-start gap-4 justify-center md:justify-start">
+            <PhoneIcon className="w-6 h-6 text-neutral-900 flex-shrink-0" />
+            <div>
+              <p className="font-medium">Telefon</p>
+              <a
+                href={`tel:${info.phone}`}
+                className="underline hover:no-underline"
+              >
                 {info.phone}
               </a>
-            </p>
+            </div>
+          </div>
 
-            <p>
-              <strong className="font-medium">E-post:</strong><br />
-              <a href={`mailto:${info.email}`} className="underline hover:no-underline">
+          {/* E-post */}
+          <div className="flex items-start gap-4 justify-center md:justify-start">
+            <EnvelopeIcon className="w-6 h-6 text-neutral-900 flex-shrink-0" />
+            <div>
+              <p className="font-medium">E-post</p>
+              <a
+                href={`mailto:${info.email}`}
+                className="underline hover:no-underline"
+              >
                 {info.email}
               </a>
-            </p>
-
-            <p>
-              <strong className="font-medium">Åpningstider:</strong><br />
-              {info.openingHours}
-            </p>
+            </div>
           </div>
+
+          {/* Åpningstider */}
+          <div className="flex items-start gap-4 justify-center md:justify-start">
+            <ClockIcon className="w-6 h-6 text-neutral-900 flex-shrink-0" />
+            <div>
+              <p className="font-medium">Åpningstider</p>
+              <p>{info.openingHours}</p>
+            </div>
+          </div>
+
         </div>
 
-        {/* RIGHT COLUMN – GOOGLE MAP */}
+        {/* RIGHT COLUMN – MAP */}
         <MapEmbed address={info.address} />
 
       </div>
     </section>
   );
 }
-
 
