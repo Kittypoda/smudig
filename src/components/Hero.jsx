@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { client } from "../sanityClient";
-import { Link } from "react-router-dom";
 import { urlFor } from "../sanityImageUrl";
 
 export default function Hero() {
