@@ -1,4 +1,51 @@
+/* ================================
+   GOOGLE FONT
+================================ */
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=Inter:wght@400;500;600&display=swap");
+
+/* ================================
+   TAILWIND
+================================ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ================================
+   LOKAL FONT (CLEAN)
+================================ */
+@font-face {
+  font-family: "Clean";
+  src: url("/fonts/blackmango.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ================================
+   GLOBAL BASE
+================================ */
+body {
+  font-family: var(--body-font);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ================================
+   TEMA: SOFT
+================================ */
+[data-theme="soft"] {
+  --bg-color: #f6f3ee;
+  --text-color: #2b2b2b;
+  --heading-font: "Aboreto", serif;
+  --body-font: "Inter", sans-serif;
+}
+
+/* ================================
+   TEMA: CLEAN
+================================ */
+[data-theme="clean"] {
+  --bg-color: #ffffff;
+  --text-color: #1f1f1f;
+  --heading-font: "Clean", serif;
+  --body-font: "Inter", sans-serif;
+}
