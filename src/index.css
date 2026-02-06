@@ -1,12 +1,19 @@
+/* ================================
+   GOOGLE FONTS
+================================ */
 @import url("https://fonts.googleapis.com/css2?family=Aboreto&family=Inter:wght@400;500;600&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
 
+/* ================================
+   TAILWIND BASE
+================================ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* LOKAL FONT (CLEAN)*/
+/* ================================
+   LOCAL FONT (CLEAN)
+================================ */
 @font-face {
   font-family: "Clean";
   src: url("/fonts/blackmango.ttf") format("truetype");
@@ -15,16 +22,21 @@
   font-display: swap;
 }
 
-/*GLOBAL BASE */
+/* ================================
+   GLOBAL BASE
+================================ */
 body {
   --body-font: "Instrument Sans", sans-serif;
+
   font-family: var(--body-font);
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
 }
 
-/*HERO – FELLES BASE*/
+/* ================================
+   HERO – BASE STRUCTURE
+================================ */
 .hero {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -33,7 +45,11 @@ body {
 .hero-wrapper {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
+  padding: 5rem 0; /* only vertical padding */
+}
+
+.hero-text {
+  padding: 0 1.5rem;
 }
 
 .hero-heading {
@@ -49,29 +65,27 @@ body {
 }
 
 .hero-cta {
-  padding: 0.62rem 2rem;
+  padding: 0.65rem 2rem;
   border: 1px solid currentColor;
   background: transparent;
-  cursor: pointer;
   font: inherit;
+  cursor: pointer;
+}
+
+.hero-image {
+  overflow: hidden;
 }
 
 .hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.hero-image-placeholder {
-  width: 100%;
-  height: 100%;
-  background: #e5e5e5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* TEMA: SOFT */
+/* =========================================================
+   THEME: SOFT
+========================================================= */
 [data-theme="soft"] {
   --bg-color: #f6f3ee;
   --text-color: #2b2b2b;
@@ -79,6 +93,7 @@ body {
   --heading-font-size: clamp(2.5rem, 5vw, 3rem);
 }
 
+/* layout */
 [data-theme="soft"] .hero-wrapper {
   display: flex;
   flex-direction: column;
@@ -86,18 +101,32 @@ body {
   text-align: center;
 }
 
-[data-theme="soft"] .hero-image img {
-  border-radius: 2rem;
+/* full-bleed image on mobile */
+[data-theme="soft"] .hero-image {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  height: 300px;
 }
+
+/* desktop: add air + more height */
+@media (min-width: 1024px) {
+  [data-theme="soft"] .hero-image {
+    width: calc(100vw - 2.5rem);
+    height: 720px;
+  }
+}
+
+
 
 [data-theme="soft"] .hero-cta {
   border-radius: 9999px;
   margin: 0 auto;
 }
 
-/* ================================
-   TEMA: CLEAN
-================================ */
+/* =========================================================
+   THEME: CLEAN
+========================================================= */
 [data-theme="clean"] {
   --bg-color: #ebe6e2;
   --text-color: #332e28;
@@ -105,26 +134,25 @@ body {
   --heading-font-size: 60px;
 }
 
-/* Layout – mobil */
+/* layout */
 [data-theme="clean"] .hero-wrapper {
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
 
-/* Tekst */
+/* text column */
 [data-theme="clean"] .hero-text {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* 🔥 dette er poenget */
+  justify-content: flex-end;
 }
 
-/* Innholdet */
+/* keep text grouped */
 [data-theme="clean"] .hero-text-inner {
   display: flex;
   flex-direction: column;
 }
-
 
 /* CTA */
 [data-theme="clean"] .hero-cta {
@@ -133,7 +161,7 @@ body {
   align-self: flex-start;
 }
 
-/* Bilde */
+/* image */
 [data-theme="clean"] .hero-image {
   height: 630px;
 }
@@ -142,7 +170,7 @@ body {
   border-radius: 2rem;
 }
 
-/* Desktop – side om side */
+/* desktop */
 @media (min-width: 768px) {
   [data-theme="clean"] .hero-wrapper {
     flex-direction: row;
