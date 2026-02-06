@@ -56,12 +56,12 @@ body {
   font-family: var(--heading-font);
   font-size: var(--heading-font-size);
   line-height: 1.2;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-description {
   font-size: 1.125rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hero-cta {
@@ -87,7 +87,7 @@ body {
    THEME: SOFT
 ========================================================= */
 [data-theme="soft"] {
-  --bg-color: #f6f3ee;
+  --bg-color: #F7F7F7;
   --text-color: #2b2b2b;
   --heading-font: "Aboreto", serif;
   --heading-font-size: clamp(2.5rem, 5vw, 3rem);
@@ -97,7 +97,7 @@ body {
 [data-theme="soft"] .hero-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.5rem;
   text-align: center;
 }
 
@@ -110,10 +110,10 @@ body {
 }
 
 /* desktop: add air + more height */
-@media (min-width: 1024px) {
+@media (min-width: 500px) {
   [data-theme="soft"] .hero-image {
-    width: calc(100vw - 2.5rem);
-    height: 720px;
+    width: calc(100vw - 5.5rem);
+    height: 820px;
   }
 }
 
