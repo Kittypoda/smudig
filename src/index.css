@@ -35,6 +35,46 @@ body {
 }
 
 /* ================================
+   HEADER – BASE
+================================ */
+.site-header {
+  background-color: var(--bg-color);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.header-cta {
+  padding: 0.5rem 1.25rem;
+  background: #474343;
+  font: inherit;
+  cursor: pointer;
+  color: #F7F7F7;
+}
+
+
+/* ================================
    HERO – BASE STRUCTURE
 ================================ */
 .hero {
@@ -83,9 +123,30 @@ body {
   display: block;
 }
 
+
+
 /* =========================================================
    THEME: SOFT
 ========================================================= */
+/* ================================
+   HEADER – SOFT
+================================ */
+[data-theme="soft"] .header-inner {
+  justify-content: center;
+  position: relative;
+}
+
+[data-theme="soft"] .header-logo {
+  margin: 0 auto;
+}
+
+[data-theme="soft"] .header-cta {
+  position: absolute;
+  right: 1.5rem;
+  border-radius: 5px;
+}
+
+
 [data-theme="soft"] {
   --bg-color: #F7F7F7;
   --text-color: #2b2b2b;
@@ -127,6 +188,19 @@ body {
 /* =========================================================
    THEME: CLEAN
 ========================================================= */
+
+/* ================================
+   HEADER – CLEAN
+================================ */
+[data-theme="clean"] .header-inner {
+  justify-content: space-between;
+}
+
+[data-theme="clean"] .header-cta {
+  border-radius: 0.25rem;
+}
+
+
 [data-theme="clean"] {
   --bg-color: #ebe6e2;
   --text-color: #332e28;
