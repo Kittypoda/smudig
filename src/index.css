@@ -1,18 +1,12 @@
-/* ================================
-   GOOGLE FONTS
-================================ */
 @import url("https://fonts.googleapis.com/css2?family=Aboreto&family=Inter:wght@400;500;600&display=swap");
 
-/* ================================
-   TAILWIND
-================================ */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ================================
-   LOKAL FONT (CLEAN)
-================================ */
+/* LOKAL FONT (CLEAN)*/
 @font-face {
   font-family: "Clean";
   src: url("/fonts/blackmango.ttf") format("truetype");
@@ -21,19 +15,16 @@
   font-display: swap;
 }
 
-/* ================================
-   GLOBAL BASE
-================================ */
+/*GLOBAL BASE */
 body {
+  --body-font: "Instrument Sans", sans-serif;
   font-family: var(--body-font);
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
 }
 
-/* ================================
-   HERO – FELLES BASE
-================================ */
+/*HERO – FELLES BASE*/
 .hero {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -47,7 +38,7 @@ body {
 
 .hero-heading {
   font-family: var(--heading-font);
-  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-size: var(--heading-font-size);
   line-height: 1.2;
   margin-bottom: 1.5rem;
 }
@@ -55,11 +46,10 @@ body {
 .hero-description {
   font-size: 1.125rem;
   margin-bottom: 2rem;
-  opacity: 0.8;
 }
 
 .hero-cta {
-  padding: 0.75rem 2rem;
+  padding: 0.62rem 2rem;
   border: 1px solid currentColor;
   background: transparent;
   cursor: pointer;
@@ -81,14 +71,12 @@ body {
   justify-content: center;
 }
 
-/* ================================
-   TEMA: SOFT
-================================ */
+/* TEMA: SOFT */
 [data-theme="soft"] {
   --bg-color: #f6f3ee;
   --text-color: #2b2b2b;
   --heading-font: "Aboreto", serif;
-  --body-font: "Inter", sans-serif;
+  --heading-font-size: clamp(2.5rem, 5vw, 3rem);
 }
 
 [data-theme="soft"] .hero-wrapper {
@@ -111,24 +99,54 @@ body {
    TEMA: CLEAN
 ================================ */
 [data-theme="clean"] {
-  --bg-color: #ffffff;
-  --text-color: #1f1f1f;
+  --bg-color: #ebe6e2;
+  --text-color: #332e28;
   --heading-font: "Clean", serif;
-  --body-font: "Inter", sans-serif;
+  --heading-font-size: 60px;
 }
 
-/* Mobil – stablet */
+/* Layout – mobil */
 [data-theme="clean"] .hero-wrapper {
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
 
+/* Tekst */
+[data-theme="clean"] .hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* 🔥 dette er poenget */
+}
+
+/* Innholdet */
+[data-theme="clean"] .hero-text-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* CTA */
+[data-theme="clean"] .hero-cta {
+  margin-top: auto;
+  border-radius: 0.25rem;
+  align-self: flex-start;
+}
+
+/* Bilde */
+[data-theme="clean"] .hero-image {
+  height: 630px;
+}
+
+[data-theme="clean"] .hero-image img {
+  border-radius: 2rem;
+}
+
 /* Desktop – side om side */
 @media (min-width: 768px) {
   [data-theme="clean"] .hero-wrapper {
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
   }
 
   [data-theme="clean"] .hero-image {
@@ -138,14 +156,5 @@ body {
 
   [data-theme="clean"] .hero-text {
     width: 50%;
-    text-align: left;
   }
-}
-
-[data-theme="clean"] .hero-image img {
-  border-radius: 0;
-}
-
-[data-theme="clean"] .hero-cta {
-  border-radius: 0.25rem;
 }

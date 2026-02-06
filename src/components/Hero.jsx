@@ -22,34 +22,24 @@ export default function Hero() {
       <div className="hero-wrapper">
         {/* TEXT */}
         <div className="hero-text">
-          <h1 className="hero-heading">
-            {clinic.tagline}
-          </h1>
+          <div className="hero-text-inner">
+            <h1 className="hero-heading">{clinic.tagline}</h1>
 
-          <p className="hero-description">
-            {clinic.description}
-          </p>
+            <p className="hero-description">{clinic.description}</p>
 
-          <button className="hero-cta">
-            Book nå
-          </button>
+            <button className="hero-cta">Book nå</button>
+          </div>
         </div>
 
         {/* IMAGE */}
         <div className="hero-image">
           {heroImageUrl ? (
-            <img
-              src={heroImageUrl}
-              alt="Klinikk hero"
-            />
+            <img src={heroImageUrl} alt="Klinikk hero" />
           ) : (
-            <div className="hero-image-placeholder">
-              Ingen bilde lastet opp
-            </div>
+            <div className="hero-image-placeholder">Ingen bilde lastet opp</div>
           )}
         </div>
       </div>
     </section>
   );
 }
-
